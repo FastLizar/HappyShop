@@ -38,8 +38,8 @@ public class LoginView {
      * MAIN SETUP OF THE LOGIN SCREEN
      */
     public LoginView() {
-        // --- 1. SETUP LOGIN UI ---
-        // Creates typing boxes for the username and password fields
+        // LOGIN UI
+        //Typing boxes for the username and password fields
         usernameBox.setPromptText("Type your username");
         passwordBox.setPromptText("Type your password");
 
