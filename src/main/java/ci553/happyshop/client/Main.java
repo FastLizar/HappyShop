@@ -3,8 +3,10 @@ package ci553.happyshop.client;
 import ci553.happyshop.client.customer.*;
 
 import ci553.happyshop.client.emergency.EmergencyExit;
+import ci553.happyshop.client.login_register.LoginView; // imported class for Login screen
+import ci553.happyshop.client.login_register.RegisterView; // imported class for register screen
 import ci553.happyshop.client.orderTracker.OrderTracker;
-// import ci553.happyshop.client.orderTracker.OrderTrackerClient; // Not strictly needed here, but you can keep it
+import ci553.happyshop.client.orderTracker.OrderTrackerClient;
 import ci553.happyshop.client.picker.PickerController;
 import ci553.happyshop.client.picker.PickerModel;
 import ci553.happyshop.client.picker.PickerView;
@@ -15,13 +17,11 @@ import ci553.happyshop.storageAccess.DatabaseRW;
 import ci553.happyshop.storageAccess.DatabaseRWFactory;
 import javafx.application.Application;
 import javafx.stage.Stage;
-import java.io.IOException;
 import javafx.application.Platform; // NEW: Added for Platform.exit()
 
 // === NEW IMPORTS FOR LOGIN/REGISTER ===
 import ci553.happyshop.client.login_register.LoginRegisterController;
 import ci553.happyshop.client.login_register.LoginRegisterModel;
-import ci553.happyshop.client.login_register.LoginRegisterView;
 // ======================================
 
 
@@ -197,27 +197,36 @@ public class Main extends Application {
     }
 
 
+
     /**
-     * NEW HELPER METHOD: Sets up and runs the simple Login/Register MVC system.
-     * It uses the LoginRegisterView as a modal window, which stops the Main application
-     * until the user successfully logs in or closes the window.
-     * @return The job role ("customer", "picker", etc.) of the logged-in user, or null if the window was closed.
+     * NEW METHOD, IT RUNS THE SETUP BETWEEN LoginView AND RegisterView
      */
     private String runLoginScreenAndGetRole() {
-        // 1. Make the new beginner-style MVC parts
-        LoginRegisterView theScreen = new LoginRegisterView();
-        LoginRegisterController theBoss = new LoginRegisterController();
+
+        LoginView theLoginView = new LoginView();         //Login screen
+        RegisterView theRegisterView = new RegisterView();  // The Register Screen
+        LoginRegisterController loginRegisterController = new LoginRegisterController();
         LoginRegisterModel theBrains = new LoginRegisterModel();
 
-        // 2. Link them all together so they can talk!
-        theScreen.theController = theBoss;
-        theBoss.theModel = theBrains;
-        theBoss.theView = theScreen;
 
-        // NOTE: If the LoginRegisterModel needs the DatabaseRW object, inject it here too!
-        // theBrains.databaseRW = DatabaseRWFactory.createDatabaseRW();
 
-        // 3. Show the login screen and wait for the result
-        return theScreen.showAndWaitAndGetRole();
+        //Links controller and the model
+        loginRegisterController.theModel = theBrains;
+
+        //Links controller to view
+        loginRegisterController.theLoginView = theLoginView;
+        loginRegisterController.theRegisterView = theRegisterView;
+
+        //Links the view to controller
+        theLoginView.theController = loginRegisterController;
+        theRegisterView.theController = loginRegisterController;
+
+        //Links the RegisterView and LoginView to each other
+        theLoginView.theRegisterView = theRegisterView;
+        theRegisterView.theLoginView = theLoginView;
+
+
+        return theLoginView.showAndWaitAndGetRole();
     }
+
 }
