@@ -7,6 +7,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
+import javafx.scene.control.Hyperlink; // New import for a hyperlink
 import javafx.scene.control.TextField;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
@@ -38,21 +39,26 @@ public class LoginRegisterView {
         usernameBox.setPromptText("Type your username");
         passwordBox.setPromptText("Type your password");
 
-        // Cretes a button to click one the user typed in their username and password
+        // Creates a button to click one the user typed in their username and password
         Button loginButton = new Button("Login");
-        Button registerButton = new Button("New User? Register!"); //register page link
 
-        //Calls the 'buttonClicked' method
+
+        // NEW LINE 43: Create a clickable link for registration
+        Hyperlink registerLink = new Hyperlink("New User? Register Here");
+
+
+        // 3. Tell the buttons/link to call our 'buttonClicked' method
         loginButton.setOnAction(this::buttonClicked);
-        registerButton.setOnAction(this::buttonClicked);
+        registerLink.setOnAction(this::linkClicked);
 
-       //Simple style for the clickable buttons
+
         loginButton.setStyle("-fx-font-size: 14pt; -fx-background-color: lightgreen;");
-        registerButton.setStyle("-fx-font-size: 10pt; -fx-background-color: lightblue;");
+        registerLink.setStyle("-fx-font-size: 10pt; -fx-text-fill: blue; -fx-underline: true;");
 
-        //Creates a virtual box to fill all the parts into a proper layout
-        VBox rootLayout = new VBox(20);
-        rootLayout.setPadding(new Insets(30));
+
+
+        VBox rootLayout = new VBox(20); // 20 is the spacing between items
+        rootLayout.setPadding(new Insets(30)); // Space around the edges
         rootLayout.setAlignment(Pos.CENTER);
         rootLayout.getChildren().addAll(
                 messageLabel,
@@ -61,26 +67,29 @@ public class LoginRegisterView {
                 new Label("Password:"),
                 passwordBox,
                 loginButton,
-                registerButton
+                registerLink
         );
 
-        //This paragraph sets up the window and the scene
-        Scene loginScene = new Scene(rootLayout, 350, 400); //Height and width pixels
+        // 5. Setup the whole scene and window
+        Scene loginScene = new Scene(rootLayout, 600, 600);
         loginWindow.setScene(loginScene);
-        loginWindow.setTitle("HappyShop 🛒 - Log In"); // title of the page
+        loginWindow.setTitle("HappyShop 🛒 - Log In");
     }
 
-
+    // This method shows the login window and blocks the Main application until it's closed.
     public String showAndWaitAndGetRole() {
+        // This makes the login window a must-do item! Main.java stops until this window is closed.
+        loginWindow.initModality(Modality.APPLICATION_MODAL);
 
-        loginWindow.initModality(Modality.APPLICATION_MODAL); //This line ensures the login window must run
+        loginWindow.showAndWait(); // Execution STOPS HERE until the window closes!
 
-        loginWindow.showAndWait();
-
-        return roleAfterLogin;
+        return roleAfterLogin; // Returns the role we set in loginSuccessAndClose()
     }
 
 
+    /**
+     * When the LOGIN button is clicked, this method runs.
+     */
     private void buttonClicked(ActionEvent event) {
         Button theButton = (Button) event.getSource();
 
@@ -89,13 +98,27 @@ public class LoginRegisterView {
             return;
         }
 
-      //when login button is clicked sets the doLoginAction()
+        //when login button is clicked sets the doLoginAction()
         if (theButton.getText().equals("Login")) {
             theController.doLoginAction();
-        } else if (theButton.getText().equals("New User? Register!")) {
-            theController.doRegisterAction();
         }
+        // We removed the Register button logic from here.
     }
+
+    /**
+     * METHOD CALLS WHEN THE REGISTER LINK IS CLICKED
+     */
+    private void linkClicked(ActionEvent event) {
+        // Since we know only the RegisterLink calls this method, we can directly call the action.
+        if (theController == null) {
+            System.err.println("Controller not set up yet!");
+            return;
+        }
+
+        // This is the action that the old Register button used to trigger
+        theController.doRegisterAction();
+    }
+
 
     //   ======Methods the controller will use=======
 
@@ -105,7 +128,7 @@ public class LoginRegisterView {
         return usernameBox.getText();
     }
 
-   // This method gets the input from the password
+    // This method gets the input from the password
     public String getThePassword() {
         return passwordBox.getText();
     }
