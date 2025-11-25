@@ -55,7 +55,7 @@ public class Main extends Application {
         // Note: Each client type can be instantiated multiple times (e.g., calling startCustomerClient() as many times as needed)
         // to simulate a multi-user environment, where multiple clients of the same type interact with the system concurrently.
 
-        // 1. starts the EmergencyExit GUI, which used to close the entire application immediatelly
+        // 1. starts the EmergencyExit GUI, which used to close the entire application immediately
         startEmergencyExit();
 
         // 2. NEW: Start the Login/Registration Screen and WAIT for the user's role

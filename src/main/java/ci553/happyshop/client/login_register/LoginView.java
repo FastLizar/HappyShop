@@ -59,7 +59,7 @@ public class LoginView {
         registerLink.setStyle("-fx-font-size: 10pt; -fx-text-fill: blue; -fx-underline: true;"); //register link styling
 
 
-        //Evrything here will be pulled into a window also called a vbox
+        //Everything here will be pulled into a window also called a vbox
         loginRootLayout = new VBox(20); // 20 is the spacing between items
         loginRootLayout.setPadding(new Insets(30)); // Space around the edges
         loginRootLayout.setAlignment(Pos.CENTER);
