@@ -14,7 +14,7 @@ public class LoginRegisterModel {
 
     private static final String APP_DIR = "HappyShopData";
     private static final String USER_FILE_NAME = // specified path to user_accounts.txt file
-            "C:\\Users\\vo73\\IdeaProjects\\HappyShop\\src\\main\\java\\ci553\\happyshop\\client\\login_register\\user_accounts.txt";
+            "src\\main\\java\\ci553\\happyshop\\client\\login_register\\user_accounts.txt";
 
     //A list to hold the user data
     private final List<String> currentUsers = new ArrayList<>();
