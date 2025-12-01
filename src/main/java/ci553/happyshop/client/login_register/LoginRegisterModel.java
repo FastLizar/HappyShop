@@ -7,18 +7,17 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-
-
-
+import java.io.File;  //NEW IMPORT TO READ JAVA FILES
 
 
 public class LoginRegisterModel {
 
-    //Link to the user accounts file
-    private static final String USER_FILE_NAME = "user_accounts.txt";
+    private static final String APP_DIR = "HappyShopData";
+    private static final String USER_FILE_NAME = // specified path to user_accounts.txt file
+            "C:\\Users\\vo73\\IdeaProjects\\HappyShop\\src\\main\\java\\ci553\\happyshop\\client\\login_register\\user_accounts.txt";
+
     //A list to hold the user data
     private final List<String> currentUsers = new ArrayList<>();
-
 
     private String userID = null; //variable used to remember the user
 
@@ -26,7 +25,16 @@ public class LoginRegisterModel {
     public String getTheID() {  //returns the variable after successful login
         return userID;
     }
+    private void ensureDirectoryExists() {
+        //Creates a file inside the directory path
+        File appDir = new File(System.getProperty("user.home") + File.separator + APP_DIR);
 
+        //Checks if the file exists
+        if (!appDir.exists()) {
+            System.out.println("Creating application data directory: " + appDir.getAbsolutePath());
+            appDir.mkdirs(); // mkdirs() creates the directory and any necessary parent directories
+        }
+    }
     //New method which will help run all the accounts from the text file
     private void loadAccountsFromFile() {
         currentUsers.clear();
@@ -90,10 +98,13 @@ public class LoginRegisterModel {
         }
 
 
-        String role = "customer"; //New registered users are always customers.
+        String role = "customer"; //New registered users are always customers
         String newRecord = userWord + "," + secretWord + "," + role + "\n"; //Format: user,pass,role, and a new line
 
         try (FileWriter fw = new FileWriter(USER_FILE_NAME, true)) { //'true' means append to the end
+
+            System.out.println("Attempting to write to absolute path: " + new java.io.File(USER_FILE_NAME).getAbsolutePath());
+
             fw.write(newRecord);
             System.out.println("New user registered and saved: " + userWord);
 
