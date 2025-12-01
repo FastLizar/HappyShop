@@ -38,7 +38,7 @@ import ci553.happyshop.client.login_register.LoginRegisterModel;
  * Note: Each client type can be instantiated multiple times (e.g., calling startCustomerClient() as many times as needed)
  * to simulate a multi-user environment, where multiple clients of the same type interact with the system concurrently.
  *
- * @version 1.0
+ * @version 0.1.3
  * @author  Shine Shan University of...
  */
 public class Main extends Application {
@@ -153,7 +153,7 @@ public class Main extends Application {
      * This client is simple and does not follow the MVC pattern. It only registers with the OrderHub
      * to receive order status notifications.
      */
-    // NEW: DEFINITION ADDED TO RESOLVE "cannot resolve method" ERROR
+
     private void startOrderTrackerClient() {
         OrderTracker orderTracker = new OrderTracker();
         orderTracker.registerWithOrderHub();
