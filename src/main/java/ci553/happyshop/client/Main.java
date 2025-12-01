@@ -68,17 +68,20 @@ public class Main extends Application {
 
             // Start the client based on the user's role
             switch (userRole) {
-                case "customer":
+                case "customer":   //Customer account access
+                    startCustomerClient();
+                    startOrderTrackerClient();
+                    break;
+                case "picker":  //Staff Member account access
+                    startPickerClient();
+                    startOrderTrackerClient();
                     startCustomerClient();
                     break;
-                case "picker":
-                    startPickerClient();
-                    break;
-                case "warehouse":
+                case "warehouse": //Manager account access
                     startWarehouseClient();
-                    break;
-                case "tracker": // Assuming OrderTracker is launched for a "tracker" role
-                    startOrderTrackerClient(); // <-- The method call that caused the error is now resolved below!
+                    startOrderTrackerClient();
+                    startPickerClient();
+                    startCustomerClient();
                     break;
                 default:
                     // Fallback if the role isn't recognized
@@ -191,7 +194,7 @@ public class Main extends Application {
     }
 
 
-    //starts the EmergencyExit GUI, - used to close the entire application immediatelly
+    //starts the EmergencyExit GUI, - used to close the entire application immediately
     private void startEmergencyExit(){
         EmergencyExit.getEmergencyExit();
     }

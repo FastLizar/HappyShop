@@ -9,7 +9,7 @@ import javafx.application.Application;
  * This class is intentionally kept simple to isolate the bootstrapping logic.
  *
  * @author Shine Shan University of Brighton
- * @version 1.0
+ * @version 0.1.2
  */
 
 public class Launcher  {

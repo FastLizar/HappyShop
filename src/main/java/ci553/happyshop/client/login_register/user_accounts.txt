@@ -1,0 +1,4 @@
+
+test,1234,customer
+test2,12345,picker
+test3,4321,warehouse
