@@ -16,7 +16,7 @@ import java.io.IOException;
  * It contains two root views:
  * 1. vbOrderMapRoot - the default view, displaying available orders awaiting assignment.
  * 2. vbOrderDetailRoot - displayed once a picker is assigned an order, allowing them to view
- *    and prepare the order.
+ * and prepare the order.
  *
  * The window initially shows the orderMapRoot.
  * Once an order is assigned to a picker,the view switches to orderDetailToot.
@@ -35,12 +35,12 @@ public class PickerView  {
 
     //Three controllers needs updating when program going on
     private TextArea taOrderMap = new TextArea();
-          // TextArea for displaying a list of orders and their states(orderId → state)
+    // TextArea for displaying a list of orders and their states(orderId → state)
     private TextArea taOrderDetail = new TextArea();
-        // TextArea for displaying detailed information about the selected order after it is assigned to the picker.
+    // TextArea for displaying detailed information about the selected order after it is assigned to the picker.
     private Label laDetailRootTitle;
-       // Label used as the title for the Order Detail section.
-       // Reminds the picker not to close the window if the order hasn't been collected by the customer.
+    // Label used as the title for the Order Detail section.
+    // Reminds the picker not to close the window if the order hasn't been collected by the customer.
 
     public void start(Stage window) {
         vbOrderMapRoot = createOrderMapRoot();

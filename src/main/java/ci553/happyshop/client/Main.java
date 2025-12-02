@@ -58,12 +58,12 @@ public class Main extends Application {
         // 1. starts the EmergencyExit GUI, which used to close the entire application immediately
         startEmergencyExit();
 
-        // 2. NEW: Start the Login/Registration Screen and WAIT for the user's role
+        //Starts the Login/Registration Screen and WAIT for the user's role
         String userRole = runLoginScreenAndGetRole();
 
-        // 3. NEW: If login was successful, proceed to launch the correct client.
+        // If login was successful, proceeds to launch the correct client
         if (userRole != null) {
-            // Initialise the order map in the OrderHub
+            // Initialises the order map in the OrderHub
             OrderHub.getOrderHub().initOrderMap();
 
             // Start the client based on the user's role

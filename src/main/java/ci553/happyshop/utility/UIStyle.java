@@ -17,14 +17,14 @@ package ci553.happyshop.utility;
  * - Private constructor: prevents instantiation (this is a static-only utility class)
  * - Holds only static constants: ensures minimal memory usage and clean syntax
  *
- *  Why a Record is NOT appropriate:
+ * Why a Record is NOT appropriate:
  * - Records are intended for immutable instance data (e.g., DTOs), not static constants
  * - This class has no record components — everything is static
  * - We're using this as a utility container, not a data model
  *
- *  Reminder:
- *  Just because a class has no behavior and only data does NOT mean it should be a record.
- *  If all members are static constants, use a final utility class like this one.
+ * Reminder:
+ * Just because a class has no behavior and only data does NOT mean it should be a record.
+ * If all members are static constants, use a final utility class like this one.
  */
 
 public final class UIStyle {
@@ -53,15 +53,18 @@ public final class UIStyle {
     public static final int HistoryWinHeight = 140;
 
     public static final int EmergencyExitWinWidth = 200;
-    public static final int EmergencyExitWinHeight = 300;
+    public static final int EmergencyExitWinHeight = 200;
+
+    // === new style for a fresher look ===
 
     public static final String labelTitleStyle = "-fx-font-weight: bold; " +
-            "-fx-font-size: 16px; -fx-text-fill: purple;";
+            "-fx-font-size: 16px; -fx-text-fill: #4A206A;";
+
 
     public static final String labelStyle = "-fx-font-weight: bold; " +
             "-fx-font-size: 14px; " +
-            "-fx-text-fill: black; " +
-            "-fx-background-color: lightblue;";
+            "-fx-text-fill: darkblue; " +
+            "-fx-background-color: #EAEAEA;"; // Very Light Gray
 
     public static final String labelLowStockStyle =
             "-fx-font-size: 12px; -fx-text-fill: red;";
@@ -69,34 +72,41 @@ public final class UIStyle {
     public static final String comboBoxStyle = "-fx-font-weight: bold; " +
             "-fx-font-size: 14px;";
 
-    public static final String buttonStyle = "-fx-font-size: 15";
+    // Changed: Buttons are now a modern Teal
+    public static final String buttonStyle = "-fx-font-size: 15; -fx-background-color: #008080; -fx-text-fill: white;"; // Teal
 
+    // Changed: from 'lightgreen' to a clean, very light soft blue/gray
     public static final String rootStyle = "-fx-padding: 8px; " +
-            "-fx-background-color: lightgreen";
+            "-fx-background-color: #F0F4F7;"; // Very Light Blue/Gray (Main App BG)
 
+    // Changed: from 'lightblue' to a muted light blue/gray
     public static final String rootStyleBlue = "-fx-padding: 8px; " +
-            "-fx-background-color: lightblue";
+            "-fx-background-color: #E0E8F0;"; // Muted Light Blue (Used for Picker Detail)
 
     public static final String rootStyleGray = "-fx-padding: 8px; " +
             "-fx-background-color: lightgray";
 
+    // Changed: from 'lightpink' to a very light, soft pink/beige
     public static final String rootStyleWarehouse = "-fx-padding: 8px; " +
-            "-fx-background-color: lightpink";
+            "-fx-background-color: #F7EBEB;"; // Very Light Pink/Beige (Muted Warehouse BG)
 
+    // Changed: from 'lightyellow' to a soft gold/beige for less visual aggression, but still noticeable for a receipt
     public static final String rootStyleYellow = "-fx-padding: 8px; " +
-            "-fx-background-color: lightyellow";
+            "-fx-background-color: #FFFACD;"; // Lemon Chiffon/Soft Yellow (Used for Receipt/Order Map)
 
     public static final String rootVipCustomerStyle = "-fx-padding: 8px; " +
             "-fx-background-color: burlywood";
 
     public static final String spinnerArrowStyle = "-fx-font-size: 12px; -fx-padding: 0;";
 
-    public static final String textFiledStyle = "-fx-font-size: 16";
+    // Changed: text fields now have a white background for better contrast
+    public static final String textFiledStyle = "-fx-font-size: 16; -fx-background-color: white;";
     public static final String smallTextFiledStyle = "-fx-font-size: 14";
     public static final String tinyTextFiledStyle = "-fx-font-size: 12";
 
+    // Changed: from 'lightpink' to a softer light blue background for product info
     public static final String labelMulLineStyle = "-fx-font-size: 16px; " +
-            "-fx-background-color: lightpink";
+            "-fx-background-color: #ADD8E6;"; // Light Blue
 
     public static final String labelPriceStyle = "-fx-font-size: 16px; " +
             "-fx-background-color: lightyellow";

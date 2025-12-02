@@ -9,16 +9,10 @@ public class LoginRegisterController {
 
     //Link to the model file
     public LoginRegisterModel theModel;
-
-    // Updated: Now links to two views
     public LoginView theLoginView; // The main window manager/Login Screen
     public RegisterView theRegisterView; // The Register Screen
-
-    // New: Reference to the currently active view's input fields
     private String currentUsername = "";
     private String currentPassword = "";
-
-    // New: Setter method called by the active view to update input
     public void setInput(String username, String password) {
         this.currentUsername = username;
         this.currentPassword = password;
@@ -27,7 +21,7 @@ public class LoginRegisterController {
 
     public void doLoginAction() {
 
-        // Use the input captured by the active view (LoginView)
+        //Uses the input captured by the active view
         String user = currentUsername; //takes the username from the screen
         String pass = currentPassword; // takes the password from the screen
 

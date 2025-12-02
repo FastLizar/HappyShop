@@ -23,7 +23,7 @@ import java.sql.SQLException;
  *
  * 1. Search Page – Always visible, allowing customers to browse and search for products.
  * 2. the second page – display either the Trolley Page or the Receipt Page
- *    depending on the current context. Only one of these is shown at a time.
+ * depending on the current context. Only one of these is shown at a time.
  */
 
 public class CustomerView  {
@@ -58,7 +58,8 @@ public class CustomerView  {
         // Create a divider line
         Line line = new Line(0, 0, 0, HEIGHT);
         line.setStrokeWidth(4);
-        line.setStroke(Color.PINK);
+        // Changed the colour scheme for a more fresh and professional look
+        line.setStroke(Color.web("#CCCCCC")); // Light Gray Divider
         VBox lineContainer = new VBox(line);
         lineContainer.setPrefWidth(4); // Give it some space
         lineContainer.setAlignment(Pos.CENTER);
@@ -213,6 +214,6 @@ public class CustomerView  {
 
     WindowBounds getWindowBounds() {
         return new WindowBounds(viewWindow.getX(), viewWindow.getY(),
-                  viewWindow.getWidth(), viewWindow.getHeight());
+                viewWindow.getWidth(), viewWindow.getHeight());
     }
 }

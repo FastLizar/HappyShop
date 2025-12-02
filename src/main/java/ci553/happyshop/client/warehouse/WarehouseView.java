@@ -38,28 +38,28 @@ import javafx.scene.input.MouseEvent;
  * 🏬 (Department Store): \uD83C\uDFEC
  *
  * eg Button btnSearch = new Button("\uD83D\uDD0D");
- *    Button btnSearch = new Button("🔍");
- *    case "\uD83D\uDD0D",
- *    case "🔍"
+ * Button btnSearch = new Button("🔍");
+ * case "\uD83D\uDD0D",
+ * case "🔍"
  */
 
 /**
  * The Warehouse interface (WarehouseView) contains two main pages:
  * a divider line is between the two pages
  * 1. Search Page:
- *    - The key data model for the search page is an observable product list.
- *    - This list is updated by the model when searching the database.
- *    - A ListView observes the product list. Whenever the list changes,
- *      the ListView automatically updates itself based on the specified cell factory.
+ * - The key data model for the search page is an observable product list.
+ * - This list is updated by the model when searching the database.
+ * - A ListView observes the product list. Whenever the list changes,
+ * the ListView automatically updates itself based on the specified cell factory.
  *
  * 2. Product Form Page:
- *    - The form page contains a ComboBox for selecting between two actions:
- *      * Editing an existing product
- *      * Adding a new product to stock
- *    - Based on the ComboBox selection, one of two VBoxes will be shown:
- *      * EditProductVBox (for editing existing products), referred to as **EditChild** in the code
- *      * NewProductVBox (for adding new products), referred to as **NewProChild** in the code
- *    - Only one VBox (EditChild or NewProChild) is active and visible at a time, depending on the selected action.
+ * - The form page contains a ComboBox for selecting between two actions:
+ * * Editing an existing product
+ * * Adding a new product to stock
+ * - Based on the ComboBox selection, one of two VBoxes will be shown:
+ * * EditProductVBox (for editing existing products), referred to as **EditChild** in the code
+ * * NewProductVBox (for adding new products), referred to as **NewProChild** in the code
+ * - Only one VBox (EditChild or NewProChild) is active and visible at a time, depending on the selected action.
  */
 
 public class WarehouseView  {
@@ -87,8 +87,8 @@ public class WarehouseView  {
     String theProFormMode ="EDIT";
     /** productFormPage has two children at a time,
      * 1. cbProductFormMode: A ComboBox that holds two action types for the product form:
-     *    - "EDIT": For editing an existing product
-     *    - "NEW": For adding a new product to stock
+     * - "EDIT": For editing an existing product
+     * - "NEW": For adding a new product to stock
      * The action mode (either "EDIT" or "NEW") is stored in the 'theProFormMode' variable to keep track of the current mode.
      *
      * The following two second childeren swap based on the selected value of the ComboBox:
@@ -137,7 +137,8 @@ public class WarehouseView  {
         // Divider line between SearchPage and ProductFormPage
         Line line = new Line(0, 0, 0, HEIGHT);
         line.setStrokeWidth(4);
-        line.setStroke(Color.LIGHTGREEN);
+        //Colour Refresh for a better and more professional look
+        line.setStroke(Color.web("#CCCCCC")); // Light Gray Divider
         VBox lineContainer = new VBox(line);
         lineContainer.setPrefWidth(4);
         lineContainer.setAlignment(Pos.CENTER);
@@ -491,7 +492,7 @@ public class WarehouseView  {
         FileChooser fileChooser = new FileChooser();
         fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("Images", "*.png", "*.jpg", "*.jpeg"));
         File file = fileChooser.showOpenDialog(null); //return absolute fullpath of the user selected file
-                                                              //eg C:/Users/John/Pictures/sample.jpg
+        //eg C:/Users/John/Pictures/sample.jpg
         if (file != null) {
 
             if (theProFormMode.equals("EDIT")) {
@@ -556,20 +557,20 @@ public class WarehouseView  {
     }
 
     void resetNewProChild() {
-       tfIdNewPro.setText("");
-       tfPriceNewPro.setText("");
-       tfStockNewPro.setText("");
-       taDescriptionNewPro.setText("");
-       ivProNewPro.setImage(new Image("WarehouseImageHolder.jpg"));
-       imageUriNewPro = null; //clear the selcted image
-       System.out.println("resetNewProChild in view called");
+        tfIdNewPro.setText("");
+        tfPriceNewPro.setText("");
+        tfStockNewPro.setText("");
+        taDescriptionNewPro.setText("");
+        ivProNewPro.setImage(new Image("WarehouseImageHolder.jpg"));
+        imageUriNewPro = null; //clear the selcted image
+        System.out.println("resetNewProChild in view called");
     }
 
     WindowBounds getWindowBounds() {
         return new WindowBounds(viewWindow.getX(),
-                                viewWindow.getY(),
-                                viewWindow.getWidth(),
-                                viewWindow.getHeight());
+                viewWindow.getY(),
+                viewWindow.getWidth(),
+                viewWindow.getHeight());
     }
 
     //   //another way to reset the editChild and NewProChild
@@ -596,5 +597,3 @@ public class WarehouseView  {
 //
 
 }
-
-
